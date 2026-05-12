@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions — Men's Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0908;
+    --paper: #f4ede4;
+    --ember: #d97706;
+    --ember-bright: #f59e0b;
+    --rust: #7c2d12;
+    --bone: #e8dccc;
+    --char: #1a1816;
+    --steel: #4a4744;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ============ NAV (matches index) ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(10,9,8,0.95) 0%, rgba(10,9,8,0.85));
+    backdrop-filter: blur(8px);
+  }
+  nav .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.18em;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  nav .logo span { color: var(--ember-bright); }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+  }
+  nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  nav a:hover { opacity: 1; color: var(--ember-bright); }
+  nav .cta {
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--ember);
+    color: var(--ember-bright);
+    opacity: 1;
+  }
+  nav .cta:hover { background: var(--ember); color: var(--ink); }
+
+  /* ============ HEADER ============ */
+  .terms-header {
+    padding: 10rem 3rem 4rem;
+    border-bottom: 1px solid var(--char);
+    position: relative;
+    overflow: hidden;
+  }
+  .terms-header::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(217,119,6,0.12) 0%, transparent 60%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .terms-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .breadcrumb {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .breadcrumb::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--ember-bright);
+  }
+  .breadcrumb a {
+    color: var(--ember-bright);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .breadcrumb a:hover { opacity: 1; }
+  .breadcrumb .sep { color: var(--steel); }
+  .terms-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+    margin-bottom: 1.5rem;
+    color: var(--paper);
+  }
+  .terms-header h1 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ember-bright);
+    font-size: 0.85em;
+  }
+  .terms-meta {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--char);
+  }
+  .terms-meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .terms-meta-item .label {
+    color: var(--steel);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .terms-meta-item .val { color: var(--paper); }
+  .terms-intro {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--bone);
+    max-width: 750px;
+    margin-top: 2rem;
+    line-height: 1.6;
+  }
+
+  /* ============ BODY LAYOUT ============ */
+  .terms-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 3rem 8rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ============ TOC SIDEBAR ============ */
+  .toc {
+    position: sticky;
+    top: 8rem;
+  }
+  .toc-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ember-bright);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--char);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    margin-bottom: 0.6rem;
+  }
+  .toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    color: var(--bone);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.3rem 0;
+    transition: color 0.3s, padding-left 0.3s;
+    line-height: 1.3;
+  }
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--steel);
+    flex-shrink: 0;
+  }
+  .toc a:hover {
+    color: var(--ember-bright);
+    padding-left: 0.4rem;
+  }
+  .toc a:hover::before { color: var(--ember-bright); }
+
+  /* ============ CONTENT ============ */
+  .terms-content section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--char);
+    scroll-margin-top: 6rem;
+  }
+  .terms-content section:first-child { padding-top: 0; }
+  .terms-content section:last-child { border-bottom: none; }
+
+  .section-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .terms-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--paper);
+    margin-bottom: 1.5rem;
+  }
+  .terms-content h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: var(--ember-bright);
+    margin: 2rem 0 0.8rem;
+  }
+  .terms-content p {
+    color: var(--bone);
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    max-width: 720px;
+  }
+  .terms-content ul {
+    list-style: none;
+    margin: 1rem 0 1.5rem;
+    max-width: 720px;
+  }
+  .terms-content ul li {
+    padding: 0.5rem 0 0.5rem 1.8rem;
+    position: relative;
+    color: var(--bone);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .terms-content ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ember);
+    font-weight: bold;
+  }
+  .terms-content strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+  .terms-content em {
+    color: var(--ember-bright);
+    font-style: italic;
+  }
+  .placeholder {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    background: var(--char);
+    border: 1px dashed var(--ember);
+    color: var(--ember-bright);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ============ CALLOUT ============ */
+  .callout {
+    background: var(--char);
+    border-left: 3px solid var(--ember);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    max-width: 720px;
+  }
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .callout p {
+    margin-bottom: 0;
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+
+  /* ============ SIGNATURE BLOCK ============ */
+  .signature {
+    margin-top: 3rem;
+    padding: 3rem;
+    border: 1px solid var(--char);
+    background: linear-gradient(180deg, var(--char) 0%, var(--ink) 100%);
+    max-width: 720px;
+  }
+  .sig-row {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .sig-row:last-child { margin-bottom: 0; }
+  .sig-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel);
+    white-space: nowrap;
+    padding-bottom: 0.4rem;
+  }
+  .sig-line {
+    flex: 1;
+    border-bottom: 1px solid var(--steel);
+    height: 2rem;
+  }
+  .sig-line.short { max-width: 180px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    padding: 4rem 3rem 2rem;
+    border-top: 1px solid var(--char);
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.18em;
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+  .footer-logo span { color: var(--ember-bright); }
+  .footer-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--steel);
+    max-width: 350px;
+    line-height: 1.5;
+  }
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--bone);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--ember-bright); }
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--char);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--steel);
+    text-transform: uppercase;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav ul { display: none; }
+    nav ul.show-mobile {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--char);
+      padding: 1rem;
+      border: 1px solid var(--steel);
+    }
+    .terms-header { padding: 7rem 1.5rem 3rem; }
+    .terms-body { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem 5rem; }
+    .toc { position: static; }
+    .terms-meta { gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .sig-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">MEN'S GROUP<span>.</span></a>
+  <ul>
+    <li><a href="index.html#who">Who</a></li>
+    <li><a href="index.html#packages">Packages</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#numbers">Outcomes</a></li>
+    <li><a href="index.html#apply" class="cta">Apply →</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HEADER ============ -->
+<header class="terms-header">
+  <div class="terms-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">MEN'S GROUP</a>
+      <span class="sep">/</span>
+      <span>Legal</span>
+      <span class="sep">/</span>
+      <span>Terms</span>
+    </div>
+    <h1>Terms &<br><em>Conditions.</em></h1>
+    <p class="terms-intro">
+      Please read these Terms and Conditions carefully before enrolling in or participating in the Men's Group Coaching program. By enrolling and making payment, you confirm that you have read, understood, and agree to be bound by these terms.
+    </p>
+
+    <div class="terms-meta">
+      <div class="terms-meta-item">
+        <span class="label">Document</span>
+        <span class="val">Men's Group Coaching T&Cs</span>
+      </div>
+      <div class="terms-meta-item">
+        <span class="label">Effective Date</span>
+        <span class="val">May 12, 2026</span>
+      </div>
+      <div class="terms-meta-item">
+        <span class="label">Version</span>
+        <span class="val">1.0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BODY ============ -->
+<div class="terms-body">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="toc-title">— Contents</div>
+    <ol>
+      <li><a href="#s1">Program Overview</a></li>
+      <li><a href="#s2">Enrollment & Payment</a></li>
+      <li><a href="#s3">Refund Policy</a></li>
+      <li><a href="#s4">Participant Responsibilities</a></li>
+      <li><a href="#s5">Code of Conduct</a></li>
+      <li><a href="#s6">Confidentiality</a></li>
+      <li><a href="#s7">Intellectual Property</a></li>
+      <li><a href="#s8">Disclaimer & Liability</a></li>
+      <li><a href="#s9">Attendance & Make-Up</a></li>
+      <li><a href="#s10">Termination</a></li>
+      <li><a href="#s11">Privacy</a></li>
+      <li><a href="#s12">Governing Law</a></li>
+      <li><a href="#s13">Amendments</a></li>
+      <li><a href="#s14">Acknowledgment</a></li>
+    </ol>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="terms-content">
+
+    <section id="s1">
+      <div class="section-marker">§ 01</div>
+      <h2>Program Overview</h2>
+      <p>The Men's Group Coaching ("the Program") is a group coaching experience designed to support men in areas including mindset, purpose, relationships, accountability, and personal growth. The Program is facilitated by <strong>Men's Group Coaching</strong> ("the Coach" or "we"). Contact: mensgroupcoach@gmail.com &nbsp;·&nbsp; 561-677-0094.</p>
+      <p>Program details including format, schedule, and content are as follows:</p>
+      <ul>
+        <li>Format: Live group sessions (virtual or in-person, as specified at enrollment)</li>
+        <li>Duration: As outlined in your enrollment materials or sales agreement</li>
+        <li>Session frequency: As communicated upon enrollment</li>
+        <li>Platform: FaceTime and Zoom</li>
+      </ul>
+    </section>
+
+    <section id="s2">
+      <div class="section-marker">§ 02</div>
+      <h2>Enrollment & Payment</h2>
+
+      <h3>2.1 Enrollment</h3>
+      <p>Enrollment is confirmed upon receipt of full payment or the first installment of a payment plan. A signed copy of these Terms and Conditions (or digital acceptance) is required to complete enrollment.</p>
+
+      <h3>2.2 Payment</h3>
+      <p>Program fees are due as specified in your enrollment agreement. The following payment terms apply:</p>
+      <ul>
+        <li>Full payment or payment plan installments must be received by the due date(s) specified</li>
+        <li>Accepted payment methods: debit and credit cards</li>
+        <li>Late payments may result in suspension of access until the outstanding balance is settled</li>
+        <li>All prices are listed in <strong>USD</strong> and are exclusive of applicable taxes</li>
+      </ul>
+    </section>
+
+    <section id="s3">
+      <div class="section-marker">§ 03</div>
+      <h2>Refund Policy</h2>
+      <p>Due to the nature of coaching services and the delivery of intellectual property, program resources, and community access, the following refund policy applies:</p>
+      <ul>
+        <li>Cancellations made <strong>more than 7 days</strong> before the program start date are eligible for a <strong>full refund</strong></li>
+        <li>Cancellations made <strong>within 7 days</strong> of the program start date are eligible for a <strong>50% refund</strong></li>
+        <li><strong>No refunds</strong> will be issued once the program has commenced or resources have been accessed</li>
+      </ul>
+      <div class="callout">
+        <div class="callout-label">— Exception</div>
+        <p>Exceptions may be considered at the Coach's sole discretion in documented cases of serious medical emergency. In such cases, a program credit or deferral may be offered in lieu of a refund.</p>
+      </div>
+    </section>
+
+    <section id="s4">
+      <div class="section-marker">§ 04</div>
+      <h2>Participant Responsibilities</h2>
+      <p>By enrolling in the Program, you agree to:</p>
+      <ul>
+        <li>Attend sessions punctually and participate actively and respectfully</li>
+        <li>Complete any pre-work, exercises, or assignments to the best of your ability</li>
+        <li>Treat fellow participants, coaches, and facilitators with respect and confidentiality</li>
+        <li>Maintain the confidentiality of other participants' personal disclosures within the group</li>
+        <li>Take personal responsibility for your choices, decisions, and actions arising from coaching</li>
+        <li>Ensure you have a private, distraction-free environment for virtual sessions</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <div class="section-marker">§ 05</div>
+      <h2>Code of Conduct</h2>
+      <p>The Men's Group Coaching is a space built on <em>respect, integrity, and brotherhood</em>. The following conduct is strictly prohibited:</p>
+      <ul>
+        <li>Harassment, bullying, or intimidation of any participant or facilitator</li>
+        <li>Discriminatory language or behavior of any kind</li>
+        <li>Sharing or distributing program materials, recordings, or other participants' information without written consent</li>
+        <li>Soliciting or promoting business, products, or services to other participants without prior written approval</li>
+      </ul>
+      <p><strong>The Coach reserves the right to remove any participant who violates this code of conduct without refund.</strong></p>
+    </section>
+
+    <section id="s6">
+      <div class="section-marker">§ 06</div>
+      <h2>Confidentiality</h2>
+      <p>All participants agree to hold in strict confidence any personal information, stories, or disclosures shared by fellow participants during sessions. This obligation continues after the program ends.</p>
+      <p>Program sessions may not be recorded by participants without the express written consent of the Coach and all participants present.</p>
+    </section>
+
+    <section id="s7">
+      <div class="section-marker">§ 07</div>
+      <h2>Intellectual Property</h2>
+      <p>All program materials, frameworks, workbooks, recordings, and content provided by the Coach are the exclusive intellectual property of <strong>Men's Group Coaching</strong>. Participants are granted a personal, non-transferable license to use these materials for their own development.</p>
+      <p>Participants may not:</p>
+      <ul>
+        <li>Reproduce, distribute, resell, or publicly share program materials in any form</li>
+        <li>Use program content to create derivative coaching products or programs</li>
+        <li>Record or redistribute any live session content</li>
+      </ul>
+    </section>
+
+    <section id="s8">
+      <div class="section-marker">§ 08</div>
+      <h2>Disclaimer & Limitation of Liability</h2>
+      <p><strong>Coaching is not therapy, counseling, or mental health treatment.</strong> The Coach is not a licensed therapist, psychologist, or medical professional. The Program does not constitute medical, legal, financial, or psychological advice.</p>
+      <p>By enrolling, you acknowledge that:</p>
+      <ul>
+        <li>Results from coaching vary between individuals and are not guaranteed</li>
+        <li>You are solely responsible for your own decisions and actions</li>
+        <li>The Coach's total liability to you shall not exceed the total fees paid by you for the Program</li>
+        <li>The Coach is not liable for any indirect, consequential, or incidental damages arising from participation</li>
+      </ul>
+      <div class="callout">
+        <div class="callout-label">— Important</div>
+        <p>If you are experiencing a mental health crisis, please seek support from a qualified mental health professional.</p>
+      </div>
+    </section>
+
+    <section id="s9">
+      <div class="section-marker">§ 09</div>
+      <h2>Session Attendance & Make-Up Policy</h2>
+      <p>Regular attendance is strongly encouraged to gain the full benefit of the program. The following applies:</p>
+      <ul>
+        <li>Missed sessions will not be credited or refunded</li>
+        <li>Session recordings (where available) may be provided at the Coach's discretion — check your enrollment details</li>
+        <li>The Coach reserves the right to reschedule sessions with reasonable notice</li>
+      </ul>
+    </section>
+
+    <section id="s10">
+      <div class="section-marker">§ 10</div>
+      <h2>Termination</h2>
+      <p>The Coach reserves the right to terminate a participant's enrollment at any time if, in the Coach's sole judgment, continued participation is not in the best interests of the group or the individual, or if the participant has violated these Terms. In such cases:</p>
+      <ul>
+        <li>No refund will be issued for sessions already delivered</li>
+        <li>A pro-rated credit may be offered at the Coach's discretion for remaining sessions not yet delivered</li>
+      </ul>
+      <p>Participants wishing to withdraw from the program must notify the Coach in writing. Payment obligations remain as outlined in Section 3.</p>
+    </section>
+
+    <section id="s11">
+      <div class="section-marker">§ 11</div>
+      <h2>Privacy</h2>
+      <p>Your personal information is collected and used solely for the purposes of delivering the Program and communicating with you about your enrollment. We will not sell or share your personal data with third parties without your consent, except as required by law.</p>
+      <p>By enrolling, you consent to receiving program-related communications. You may opt out of marketing communications at any time.</p>
+    </section>
+
+    <section id="s12">
+      <div class="section-marker">§ 12</div>
+      <h2>Governing Law</h2>
+      <p>These Terms and Conditions are governed by and construed in accordance with the laws of the <strong>State of Florida, United States of America</strong>. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of <strong>Broward County, Florida</strong>.</p>
+    </section>
+
+    <section id="s13">
+      <div class="section-marker">§ 13</div>
+      <h2>Amendments</h2>
+      <p>The Coach reserves the right to amend these Terms and Conditions at any time. Participants will be notified of material changes with reasonable notice. Continued participation following notice of changes constitutes acceptance of the revised terms.</p>
+    </section>
+
+    <section id="s14">
+      <div class="section-marker">§ 14</div>
+      <h2>Acknowledgment & Agreement</h2>
+      <p>By enrolling in and paying for the Men's Group Coaching program, you confirm that:</p>
+      <ul>
+        <li>You have read and understood these Terms and Conditions in full</li>
+        <li>You agree to be bound by all terms set out herein</li>
+        <li>You are <strong>18 years of age or older</strong></li>
+        <li>You enter into this agreement voluntarily</li>
+      </ul>
+
+      <div class="signature">
+        <div class="sig-row">
+          <span class="sig-label">Participant Name —</span>
+          <span class="sig-line"></span>
+          <span class="sig-label">Date —</span>
+          <span class="sig-line short"></span>
+        </div>
+        <div class="sig-row">
+          <span class="sig-label">Signature —</span>
+          <span class="sig-line"></span>
+        </div>
+      </div>
+
+      <p style="margin-top: 2.5rem; font-family: 'Fraunces', serif; font-style: italic; color: var(--steel); text-align: center;">
+        <strong>Men's Group Coaching</strong> &nbsp;·&nbsp; <span class="placeholder">[Website]</span> &nbsp;·&nbsp; mensgroupcoach@gmail.com &nbsp;·&nbsp; 561-677-0094
+      </p>
+    </section>
+
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">MEN'S GROUP<span>.</span></div>
+        <p class="footer-tagline">Men's coaching for the man who's done waiting for the right time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Program</h4>
+        <a href="index.html#packages">Kickstart</a>
+        <a href="index.html#packages">The Program</a>
+        <a href="index.html#packages">Elite</a>
+        <a href="index.html#process">The Process</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:mensgroupcoach@gmail.com">mensgroupcoach@gmail.com</a>
+        <a href="tel:5616770094">561-677-0094</a>
+        <a href="index.html#apply">Discovery Call</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© Men's Group Coaching — All rights reserved</div>
+      <div>Built in the fire.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
