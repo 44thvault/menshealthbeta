@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Men's Group — Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0908;
+    --paper: #f4ede4;
+    --ember: #d97706;
+    --ember-bright: #f59e0b;
+    --rust: #7c2d12;
+    --bone: #e8dccc;
+    --char: #1a1816;
+    --steel: #4a4744;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .serif-italic { font-family: 'Fraunces', serif; font-style: italic; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(10,9,8,0.95) 0%, rgba(10,9,8,0));
+    backdrop-filter: blur(8px);
+  }
+  nav .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.18em;
+    color: var(--paper);
+  }
+  nav .logo span { color: var(--ember-bright); }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+  }
+  nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  nav a:hover { opacity: 1; color: var(--ember-bright); }
+  nav .cta {
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--ember);
+    color: var(--ember-bright);
+    opacity: 1;
+  }
+  nav .cta:hover {
+    background: var(--ember);
+    color: var(--ink);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(217,119,6,0.18) 0%, transparent 60%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-meta::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--ember-bright);
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    color: var(--paper);
+    margin-bottom: 2rem;
+  }
+  .hero h1 .italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ember-bright);
+    font-size: 0.85em;
+    display: inline-block;
+    transform: translateY(-0.05em);
+  }
+  .hero h1 .strike {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--ember);
+    opacity: 0.5;
+  }
+  .hero-lede {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 500px;
+    color: var(--bone);
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--ember);
+    color: var(--ink);
+    padding: 1.1rem 2.2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--ember-bright); }
+  .btn-secondary {
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid var(--steel);
+    padding-bottom: 0.3rem;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--ember-bright); color: var(--ember-bright); }
+
+  .hero-visual {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .anvil {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .anvil-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--steel);
+  }
+  .anvil-frame::before, .anvil-frame::after {
+    content: '';
+    position: absolute;
+    width: 12px; height: 12px;
+    border: 1px solid var(--ember-bright);
+  }
+  .anvil-frame::before { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+  .anvil-frame::after { bottom: -6px; right: -6px; border-left: none; border-top: none; }
+
+  .stat-block {
+    text-align: center;
+    color: var(--paper);
+  }
+  .stat-block .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.9;
+    color: var(--ember-bright);
+    display: block;
+  }
+  .stat-block .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin-top: 1rem;
+  }
+  .stat-block .sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--steel);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .corner-text {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--steel);
+    text-transform: uppercase;
+  }
+  .corner-text.tl { top: 1rem; left: 1rem; }
+  .corner-text.tr { top: 1rem; right: 1rem; }
+  .corner-text.bl { bottom: 1rem; left: 1rem; }
+  .corner-text.br { bottom: 1rem; right: 1rem; }
+
+  /* ============ TICKER ============ */
+  .ticker {
+    overflow: hidden;
+    border-top: 1px solid var(--char);
+    border-bottom: 1px solid var(--char);
+    padding: 1.5rem 0;
+    background: var(--char);
+  }
+  .ticker-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 40s linear infinite;
+    white-space: nowrap;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--bone);
+  }
+  .ticker-track span { display: flex; align-items: center; gap: 4rem; }
+  .ticker-track .dot { color: var(--ember-bright); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============ SECTION BASE ============ */
+  section.block {
+    padding: 8rem 3rem;
+    position: relative;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-num::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--char);
+    max-width: 200px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    color: var(--paper);
+  }
+  .section-title em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ember-bright);
+    font-size: 0.85em;
+  }
+  .section-lede {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--bone);
+    max-width: 600px;
+    margin-bottom: 4rem;
+  }
+
+  /* ============ WHO ============ */
+  .who {
+    background: var(--ink);
+  }
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+  }
+  .niches-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .niches-list li {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--char);
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    transition: padding-left 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .niches-list li:hover {
+    padding-left: 1rem;
+    border-bottom-color: var(--ember);
+  }
+  .niches-list .num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ember-bright);
+    font-size: 0.85rem;
+  }
+  .niches-list .text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    flex: 1;
+    color: var(--paper);
+  }
+  .pains {
+    background: var(--char);
+    padding: 3rem;
+    position: relative;
+  }
+  .pains-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .pains ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  .pains li {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--bone);
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.4;
+  }
+  .pains li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ember);
+  }
+
+  /* ============ OFFERS ============ */
+  .offers {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .offers .section-num { color: var(--rust); }
+  .offers .section-num::after { background: rgba(0,0,0,0.1); }
+  .offers .section-title { color: var(--ink); }
+  .offers .section-title em { color: var(--rust); }
+  .offers .section-lede { color: var(--steel); }
+
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .offer {
+    background: var(--paper);
+    border: 1px solid rgba(0,0,0,0.12);
+    padding: 2.5rem;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .offer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(124,45,18,0.15);
+  }
+  .offer.featured {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ember);
+    transform: scale(1.03);
+  }
+  .offer.featured:hover { transform: scale(1.03) translateY(-4px); }
+  .offer.featured .offer-name { color: var(--paper); }
+  .offer.featured .offer-price { color: var(--ember-bright); }
+  .offer.featured .offer-desc { color: var(--bone); }
+  .offer.featured ul li { color: var(--bone); border-color: var(--char); }
+  .offer.featured ul li::before { color: var(--ember-bright); }
+
+  .offer-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+  }
+  .offer.featured .offer-tag {
+    color: var(--ember-bright);
+    display: inline-block;
+    background: var(--char);
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--ember);
+  }
+  .offer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+  .offer-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .offer-price .per {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--steel);
+    font-weight: 300;
+  }
+  .offer-desc {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--steel);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  .offer ul {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 2rem;
+  }
+  .offer ul li {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+    padding-left: 1.8rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .offer ul li:last-child { border-bottom: none; }
+  .offer ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+    font-weight: bold;
+  }
+  .offer-btn {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    transition: background 0.3s;
+  }
+  .offer-btn:hover { background: var(--rust); }
+  .offer.featured .offer-btn { background: var(--ember); color: var(--ink); }
+  .offer.featured .offer-btn:hover { background: var(--ember-bright); }
+
+  /* ============ PROCESS ============ */
+  .process {
+    background: var(--ink);
+    padding-bottom: 10rem;
+  }
+  .timeline {
+    margin-top: 4rem;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 120px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--char);
+  }
+  .phase {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    position: relative;
+    align-items: start;
+  }
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: 116px;
+    top: 3.2rem;
+    width: 9px;
+    height: 9px;
+    background: var(--ember-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--ink), 0 0 20px rgba(245,158,11,0.5);
+  }
+  .phase-when {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--steel);
+    text-transform: uppercase;
+    padding-top: 0.4rem;
+  }
+  .phase-body {
+    padding-left: 3rem;
+  }
+  .phase-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    margin-bottom: 0.8rem;
+  }
+  .phase-desc {
+    color: var(--bone);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 650px;
+  }
+
+  /* ============ NUMBERS ============ */
+  .numbers {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 8rem 3rem;
+  }
+  .numbers .section-num { color: var(--rust); }
+  .numbers .section-num::after { background: rgba(0,0,0,0.1); }
+  .numbers .section-title { color: var(--ink); }
+  .numbers .section-title em { color: var(--rust); }
+  .numbers .section-lede { color: var(--steel); }
+
+  .revenue-table {
+    margin-top: 3rem;
+    border-top: 2px solid var(--ink);
+  }
+  .revenue-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    align-items: baseline;
+    transition: background 0.3s;
+  }
+  .revenue-row:hover { background: rgba(217,119,6,0.05); }
+  .revenue-row.header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--steel);
+    text-transform: uppercase;
+    padding: 1rem 0;
+  }
+  .revenue-row.header:hover { background: none; }
+  .revenue-row .period {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+  .revenue-row .clients,
+  .revenue-row .package {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--steel);
+  }
+  .revenue-row .rev {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--rust);
+  }
+  .total-line {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .total-line .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+  .total-line .amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--ember-bright);
+    letter-spacing: 0.02em;
+  }
+
+  /* ============ MANIFESTO ============ */
+  .manifesto {
+    background: var(--ink);
+    text-align: center;
+    padding: 10rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(217,119,6,0.1) 0%, transparent 70%);
+  }
+  .manifesto-text {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    line-height: 1.3;
+    color: var(--paper);
+  }
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--ember-bright);
+  }
+  .manifesto-text strong {
+    font-weight: 600;
+    color: var(--paper);
+  }
+  .manifesto-attrib {
+    margin-top: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--steel);
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  /* ============ CTA ============ */
+  .cta-section {
+    background: var(--ember);
+    color: var(--ink);
+    padding: 8rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: 'GROUP';
+    position: absolute;
+    bottom: -3rem;
+    left: -1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22rem;
+    line-height: 0.85;
+    color: var(--ember-bright);
+    opacity: 0.4;
+    pointer-events: none;
+    letter-spacing: -0.03em;
+  }
+  .cta-content {
+    position: relative;
+    max-width: 800px;
+  }
+  .cta-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+  .cta-section h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--paper);
+    font-size: 0.85em;
+  }
+  .cta-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--char);
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+  }
+  .cta-section .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .cta-section .btn-primary:hover {
+    background: var(--char);
+    color: var(--ember-bright);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    padding: 4rem 3rem 2rem;
+    border-top: 1px solid var(--char);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.18em;
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+  .footer-logo span { color: var(--ember-bright); }
+  .footer-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--steel);
+    max-width: 350px;
+    line-height: 1.5;
+  }
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--ember-bright);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--bone);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--ember-bright); }
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--char);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--steel);
+    text-transform: uppercase;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .hero-visual { height: 50vh; }
+    section.block { padding: 5rem 1.5rem; }
+    .who-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .offers-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .offer.featured { transform: none; }
+    .offer.featured:hover { transform: translateY(-4px); }
+    .timeline::before { left: 4px; }
+    .phase { grid-template-columns: 1fr; gap: 0.5rem; padding: 2rem 0 2rem 2rem; }
+    .phase::before { left: 0; top: 2.4rem; }
+    .phase-body { padding-left: 0; }
+    .revenue-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
+    .revenue-row.header { display: none; }
+    .revenue-row > div::before {
+      content: attr(data-label);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--steel);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .cta-section::before { font-size: 10rem; }
+    .numbers { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MEN'S GROUP<span>.</span></div>
+  <ul>
+    <li><a href="#who">Who</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#apply" class="cta">Apply →</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-meta">EST. — Men's Health & Performance Coaching</div>
+    <h1>
+      Built<br>
+      <span class="italic">in the</span><br>
+      Fire.
+    </h1>
+    <p class="hero-lede">
+      A 90-day coaching program for men who've lost the routine, lost the edge, or never had it. No fluff. No bootcamp theatrics. Just the work — and a coach who shows up every day until it's done.
+    </p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">Book a Discovery Call</a>
+      <a href="#packages" class="btn-secondary">See Packages</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="anvil">
+      <div class="anvil-frame"></div>
+      <span class="corner-text tl">01 / Discipline</span>
+      <span class="corner-text tr">02 / Strategy</span>
+      <span class="corner-text bl">03 / Recovery</span>
+      <span class="corner-text br">04 / Identity</span>
+      <div class="stat-block">
+        <span class="num">90</span>
+        <div class="label">Days to Transform</div>
+        <div class="sub">— or your money back</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Strength <span class="dot">●</span> Stamina <span class="dot">●</span> Sleep <span class="dot">●</span> Strategy <span class="dot">●</span> Strength <span class="dot">●</span> Stamina <span class="dot">●</span> Sleep <span class="dot">●</span> Strategy <span class="dot">●</span> Strength <span class="dot">●</span> Stamina <span class="dot">●</span> Sleep <span class="dot">●</span> Strategy <span class="dot">●</span></span>
+    <span>Strength <span class="dot">●</span> Stamina <span class="dot">●</span> Sleep <span class="dot">●</span> Strategy <span class="dot">●</span> Strength <span class="dot">●</span> Stamina <span class="dot">●</span> Sleep <span class="dot">●</span> Strategy <span class="dot">●</span> Strength <span class="dot">●</span> Stamina <span class="dot">●</span> Sleep <span class="dot">●</span> Strategy <span class="dot">●</span></span>
+  </div>
+</div>
+
+<!-- ============ WHO ============ -->
+<section class="block who" id="who">
+  <div class="section-num">02 — Who This Is For</div>
+  <h2 class="section-title">If you recognize<br><em>yourself</em> here.</h2>
+  <p class="section-lede">Men's Group isn't for everyone. The program is built for a specific man at a specific inflection point. Real change happens when the right person meets the right structure.</p>
+
+  <div class="who-grid">
+    <ul class="niches-list">
+      <li><span class="num">/ 01</span><span class="text">Busy Professionals (30–45) Who Lost Their Fitness</span></li>
+      <li><span class="num">/ 02</span><span class="text">Men 40+ Rebuilding After Divorce or Burnout</span></li>
+      <li><span class="num">/ 03</span><span class="text">Entrepreneurs Who Want Energy & Performance</span></li>
+      <li><span class="num">/ 04</span><span class="text">Fathers Who Want to Lead by Example</span></li>
+    </ul>
+
+    <div class="pains">
+      <div class="pains-title">— You Probably Know These</div>
+      <ul>
+        <li>No consistent routine or accountability.</li>
+        <li>Tried diets and programs that never stuck.</li>
+        <li>Low energy. Poor sleep. Brain fog by 2 PM.</li>
+        <li>Don't even know where to start.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFFERS ============ -->
+<section class="block offers" id="packages">
+  <div class="section-num">03 — Coaching Packages</div>
+  <h2 class="section-title">Three Paths.<br><em>One outcome.</em></h2>
+  <p class="section-lede">From a single strategic intervention to a high-touch transformation, every package is built around accountability, custom programming, and direct access to your coach.</p>
+
+  <div class="offers-grid">
+    <div class="offer">
+      <div class="offer-tag">Entry</div>
+      <h3 class="offer-name">Kickstart</h3>
+      <div class="offer-price">$400 <span class="per">/ one-time</span></div>
+      <p class="offer-desc">A focused strategic intervention to get you moving in the right direction — fast.</p>
+      <ul>
+        <li>90-minute strategy call</li>
+        <li>30-day plan you'll actually execute</li>
+        <li>30-minute follow-up call at week 2</li>
+      </ul>
+      <a href="#apply" class="offer-btn">Start Here</a>
+    </div>
+
+    <div class="offer featured">
+      <div class="offer-tag">★ Core Offer</div>
+      <h3 class="offer-name">The Program</h3>
+      <div class="offer-price">$600 <span class="per">/ 3 months</span></div>
+      <p class="offer-desc">The bread-and-butter program. High-touch transformation across 12 weeks.</p>
+      <ul>
+        <li>Bi-weekly 1-on-1 calls (6 total)</li>
+        <li>Custom training + nutrition plan</li>
+        <li>Daily check-in via text/app</li>
+        <li>Unlimited voice message support</li>
+        <li>Monthly plan adjustments</li>
+      </ul>
+      <a href="#apply" class="offer-btn">Apply Now</a>
+    </div>
+
+    <div class="offer">
+      <div class="offer-tag">Premium</div>
+      <h3 class="offer-name">Elite</h3>
+      <div class="offer-price">$800 <span class="per">/ 3 months</span></div>
+      <p class="offer-desc">VIP experience for executives and high performers who need more access.</p>
+      <ul>
+        <li>Weekly 1-on-1 calls (12 total)</li>
+        <li>Full lifestyle audit</li>
+        <li>Sleep & recovery protocol</li>
+        <li>Priority same-day response</li>
+        <li>Quarterly roadmap planning</li>
+      </ul>
+      <a href="#apply" class="offer-btn">Inquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="block process" id="process">
+  <div class="section-num">04 — The Process</div>
+  <h2 class="section-title">First 90 Days,<br><em>step by step.</em></h2>
+  <p class="section-lede">Real change doesn't happen in a weekend. Here's the actual cadence — what we build, when we build it, and how the work compounds.</p>
+
+  <div class="timeline">
+    <div class="phase">
+      <div class="phase-when">Week 1–2</div>
+      <div class="phase-body">
+        <h3 class="phase-title">Foundation</h3>
+        <p class="phase-desc">Define the niche of your goals. Audit current state — sleep, training, nutrition, recovery. Set up systems for tracking. Establish baseline metrics so we know exactly what's moving.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-when">Week 3–4</div>
+      <div class="phase-body">
+        <h3 class="phase-title">Launch & Calibrate</h3>
+        <p class="phase-desc">Custom training program goes live. Nutrition framework dialed in. We run the first full cycle and adjust based on real feedback — your body, your schedule, your life.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-when">Month 2</div>
+      <div class="phase-body">
+        <h3 class="phase-title">Compound</h3>
+        <p class="phase-desc">Habits become identity. Energy returns. Sleep restructures. We refine the program based on what's working, kill what isn't, and build momentum into the next phase.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-when">Month 3</div>
+      <div class="phase-body">
+        <h3 class="phase-title">Embed</h3>
+        <p class="phase-desc">The protocol stops being something you "do" and starts being who you are. We finalize your independent training framework so the work continues long after coaching ends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="block manifesto">
+  <p class="manifesto-text">
+    <strong>Start before you're ready.</strong> You don't need a perfect plan, a gym membership, or the right shoes. You need a clear offer, a genuine desire to <em>change</em>, and the courage to <em>begin</em>.
+  </p>
+  <div class="manifesto-attrib">— The First Rule</div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-section" id="apply">
+  <div class="cta-content">
+    <h2>Apply.<br><em>Let's see if we fit.</em></h2>
+    <p>Discovery calls are free, 30 minutes, and honest. If Men's Group isn't right for you, I'll tell you. If it is, you'll leave the call with a concrete first step regardless of whether we work together.</p>
+    <a href="mailto:mensgroupcoach@gmail.com" class="btn-primary">Book Discovery Call →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">MEN'S GROUP<span>.</span></div>
+      <p class="footer-tagline">Men's coaching for the man who's done waiting for the right time.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Program</h4>
+      <a href="#packages">Kickstart</a>
+      <a href="#packages">The Program</a>
+      <a href="#packages">Elite</a>
+      <a href="#process">The Process</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:mensgroupcoach@gmail.com">mensgroupcoach@gmail.com</a>
+      <a href="tel:5616770094">561-677-0094</a>
+      <a href="#apply">Discovery Call</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© Men's Group Coaching — All rights reserved &nbsp;·&nbsp; <a href="terms.html" style="color: var(--steel); text-decoration: none; border-bottom: 1px solid var(--char);">Terms & Conditions</a></div>
+    <div>Built in the fire.</div>
+  </div>
+</footer>
+
+</body>
+</html>
